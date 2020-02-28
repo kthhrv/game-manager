@@ -19,7 +19,7 @@ class Team(models.Model):
 
 class Game(models.Model):
     date = models.DateField(unique=True)
-    players = models.ManyToManyField(Player)
+    players = models.ManyToManyField(Player, blank=True)
     teams = models.ManyToManyField(Team)
 
 
