@@ -5,7 +5,7 @@ from rest_framework import serializers
 class PlayerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Player
-        fields = ['name', 'email', 'ringer']
+        fields = ['id', 'name', 'email', 'ringer']
 
 
 class TeamSerializer(serializers.HyperlinkedModelSerializer):
@@ -17,4 +17,4 @@ class TeamSerializer(serializers.HyperlinkedModelSerializer):
 class GameSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Game
-        fields = ['date', 'players']
+        fields = ['id', 'date', 'players']
