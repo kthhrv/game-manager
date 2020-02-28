@@ -1,12 +1,20 @@
-from backend.models import Player, Game
+from backend.models import Player, Team, Game
 from rest_framework import serializers
+
 
 class PlayerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Player
         fields = ['name', 'email']
 
+
+class TeamSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Team
+        fields = ['players']
+
+
 class GameSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Game
-        fields = ['date', 'teams']
+        fields = ['date', 'players']

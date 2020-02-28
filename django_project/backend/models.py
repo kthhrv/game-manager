@@ -5,13 +5,21 @@ class Player(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()
 
+    def __str__(self):
+        return self.name
+
 
 class Team(models.Model):
+    side = models.CharField(max_length=1, choices=[('A', 'A'), ('B', 'B')])
     players = models.ManyToManyField(Player)
+
+    def __str__(self):
+        return self.side
 
 
 class Game(models.Model):
-    date = models.DateField()
+    date = models.DateField(unique=True)
+    players = models.ManyToManyField(Player)
     teams = models.ManyToManyField(Team)
 
 
