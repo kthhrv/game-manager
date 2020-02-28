@@ -3,6 +3,7 @@ from django.db import models
 
 class Player(models.Model):
     name = models.CharField(max_length=200)
+    ringer = models.BooleanField(default=False)
     email = models.EmailField()
 
     def __str__(self):
