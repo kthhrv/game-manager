@@ -11,10 +11,10 @@ class PlayerSerializer(serializers.HyperlinkedModelSerializer):
 class TeamSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Team
-        fields = ['id', 'players']
+        fields = ['id']
 
 
 class GameSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Game
-        fields = ['id', 'date', 'players']
+        fields = ['id', 'date', 'players', 'team_a', 'team_b']
