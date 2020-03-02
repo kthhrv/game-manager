@@ -15,8 +15,8 @@ class Player(models.Model):
 
 
 class Team(models.Model):
-    players = models.ManyToManyField(Player)
-    goals = models.IntegerField(default=0)
+    players = models.ManyToManyField(Player, blank=True)
+    goals = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return str(self.id)
@@ -51,7 +51,8 @@ class Game(models.Model):
         super().save(*args, **kwargs)
 
     def get_score(self):
-        return f'{ self.team_a.goals } - { self.team_b.goals }'
+        if self.team_a.goals and self.team_b.goals:
+            return f'{ self.team_a.goals } - { self.team_b.goals }'
 
     def get_players_count(self):
         return len(self.players.all())
